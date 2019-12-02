@@ -43,16 +43,24 @@ self.addEventListener('fetch', function(e) {
 // 这样之后打开页面都会使用版本更新的缓存。旧的Service Worker脚本不再控制着页面之后会被停止。
 self.addEventListener('activate', function(e) {
   e.waitUntil(
+    e.waitUntil(
+    // Promise.all(
+    //   caches.keys().then(cacheNames => {
+    //     return cacheNames.map(name => {
+    //       if (name !== cacheStorageKey) {
+    //         return caches.delete(name)
+    //       }
+    //     })
+    //   })
+    // ).then(() => {
+    //   return self.clients.claim()
+    // })
     Promise.all(
-      caches.keys().then(cacheNames => {
-        return cacheNames.map(name => {
-          if (name !== cacheStorageKey) {
-            return caches.delete(name)
-          }
-        })
+      cacheNames.filter(name => {
+        return name !== cacheStorageKey
+      }).map(name => {
+        return caches.delete(name)
       })
-    ).then(() => {
-      return self.clients.claim()
-    })
+    ).then(() => self.clients.claim())
   )
 })
