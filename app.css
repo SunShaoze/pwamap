@@ -1,0 +1,5 @@
+@media screen and (max-width: 600px) {
+  .esri-ui-bottom-left .esri-legend{
+    width: 180px !important;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "pwamap",
+  "version": "1.0.0",
+  "description": "pwa map",
+  "main": "app.js",
+  "devDependencies": {
+    "http-server": "^0.12.0",
+    "ngrok": "^3.2.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server"
+  },
+  "keywords": [
+    "pwa"
+  ],
+  "author": "ssz",
+  "license": "ISC"
+}
